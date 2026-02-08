@@ -63,8 +63,11 @@ export function DisclaimerModal() {
 
                         <div className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
                             <p className="text-yellow-300 font-semibold mb-2">请特别注意：</p>
-                            <p className="text-yellow-400">
+                            <p className="text-yellow-400 mb-2">
                                 本项目为开源教育项目，仅供学习、研究和技术交流使用，不构成任何投资建议或金融服务。
+                            </p>
+                            <p className="text-yellow-400 font-semibold">
+                                🔒 为避免法律风险，本项目所有功能均在测试网络（如 Sepolia 测试网）上运行，不涉及真实资产交易。
                             </p>
                         </div>
 

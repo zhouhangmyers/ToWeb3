@@ -39,6 +39,12 @@ export default function RootLayout({
                       本项目为开源教育项目，仅供学习、研究和技术交流使用，不构成任何投资建议或金融服务。
                     </p>
 
+                    <div className="p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+                      <p className="text-green-400 font-semibold text-sm">
+                        🔒 为避免法律风险，本项目所有功能均在测试网络（如 Sepolia 测试网）上运行，不涉及真实资产交易。
+                      </p>
+                    </div>
+
                     <div className="grid md:grid-cols-2 gap-4 py-2">
                       <div className="flex items-start gap-2">
                         <span className="text-purple-400 mt-0.5">•</span>
