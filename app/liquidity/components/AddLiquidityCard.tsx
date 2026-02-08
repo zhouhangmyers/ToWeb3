@@ -111,9 +111,6 @@ export function AddLiquidityCard({
         tokenBDecimalsNumber !== undefined &&
         allowanceB >= BigInt(parseFloat(amountB) * 10 ** tokenBDecimalsNumber)
 
-    // 检查 Router 配置是否有问题
-    const hasConfigIssue = routerAddress && factoryAddress && wethAddress
-
     return (
         <Card className={`w-full max-w-sm bg-gray-900/50 border-gray-800 ${!routerAddress ? "opacity-50" : ""}`}>
             <CardHeader>
@@ -262,7 +259,7 @@ export function AddLiquidityCard({
                         {addLiquiditySimError && (
                             <div className="p-3 bg-red-500/10 border border-red-500/30 rounded text-sm text-red-400">
                                 <div className="font-semibold mb-1">❌ 模拟失败</div>
-                                <div className="text-xs whitespace-pre-wrap break-words font-mono">
+                                <div className="text-xs whitespace-pre-wrap wrap-break-word font-mono">
                                     {addLiquiditySimError}
                                 </div>
                             </div>

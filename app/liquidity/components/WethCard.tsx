@@ -28,7 +28,7 @@ interface WethCardProps {
     wethSymbol?: string
     wethTotalSupply?: bigint
     wethBalance?: bigint
-    ethBalance: any
+    ethBalance: { value: bigint; decimals: number; formatted: string; symbol: string } | undefined
     depositAmount: string
     setDepositAmount: (amount: string) => void
     withdrawAmount: string
