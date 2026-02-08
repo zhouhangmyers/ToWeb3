@@ -189,11 +189,6 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
-
-            {/* Footer */}
-            <footer className="border-t border-gray-800 py-8 text-center text-gray-600 text-sm">
-                <p>Built with Next.js + Wagmi + Uniswap V2</p>
-            </footer>
         </div>
     )
 }
