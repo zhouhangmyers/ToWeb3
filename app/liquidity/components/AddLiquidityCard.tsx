@@ -57,8 +57,8 @@ interface AddLiquidityCardProps {
 export function AddLiquidityCard({
     isConnected,
     routerAddress,
-    factoryAddress,
-    wethAddress,
+    factoryAddress: _factoryAddress,
+    wethAddress: _wethAddress,
     tokenA,
     setTokenA,
     tokenB,

@@ -11,7 +11,7 @@ export function DisclaimerModal() {
 
     useEffect(() => {
         // 检查用户是否已经同意过
-        const hasAgreed = localStorage.getItem("disclaimer-agreed")
+        // const hasAgreed = localStorage.getItem("disclaimer-agreed")
         // 暂时强制显示（测试用）- 部署前记得改回来
         setIsOpen(true)
         // if (!hasAgreed) {
@@ -58,7 +58,7 @@ export function DisclaimerModal() {
                     >
                         <p className="text-gray-300 text-base">
                             <span className="text-yellow-400 font-semibold">⚠️ 重要提示：</span>
-                            在使用本平台前，请您仔细阅读并充分理解以下条款。点击"我已阅读并同意"即表示您已完全理解并接受本声明的全部内容。
+                            在使用本平台前，请您仔细阅读并充分理解以下条款。点击&quot;我已阅读并同意&quot;即表示您已完全理解并接受本声明的全部内容。
                         </p>
 
                         <div className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
@@ -91,7 +91,7 @@ export function DisclaimerModal() {
                         <div className="space-y-3">
                             <h3 className="text-lg font-semibold text-white">三、免责条款</h3>
                             <ul className="list-disc list-inside space-y-2 text-gray-400">
-                                <li><strong className="text-gray-300">无担保声明：</strong>本软件按"现状"提供，不提供任何明示或暗示的担保。</li>
+                                <li><strong className="text-gray-300">无担保声明：</strong>本软件按&quot;现状&quot;提供，不提供任何明示或暗示的担保。</li>
                                 <li><strong className="text-gray-300">责任限制：</strong>使用本项目产生的任何后果（包括但不限于资金损失、数据丢失、法律责任）由用户自行承担。</li>
                                 <li><strong className="text-gray-300">非投资建议：</strong>本平台不提供任何投资建议、财务规划或金融服务。</li>
                                 <li><strong className="text-gray-300">技术限制：</strong>作者不对软件的可用性、准确性、完整性或适用性作任何保证。</li>
