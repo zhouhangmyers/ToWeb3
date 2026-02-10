@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "我的 DeFi 应用",
+  title: "一站式 web3 开源工具箱 - ToWeb3",
   description: "使用 Next.js + Wagmi 构建",
 };
 
@@ -36,7 +36,7 @@ export default function RootLayout({
                   <div className="space-y-4 text-sm text-gray-400 leading-relaxed">
                     <p className="text-gray-300">
                       <span className="text-purple-400 font-semibold">⚠️ 重要提示：</span>
-                      本项目为开源教育项目，仅供学习、研究和技术交流使用，不构成任何投资建议或金融服务。
+                      本项目为个人开源项目，仅供学习、研究和技术交流使用，不构成任何投资建议或金融服务。
                     </p>
 
                     <div className="p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
@@ -65,7 +65,7 @@ export default function RootLayout({
                     </div>
 
                     <p className="text-xs text-gray-500 pt-2 border-t border-gray-800">
-                      本项目代码仅作为学习 Uniswap V2 协议、智能合约交互、Web3 前端开发的技术参考。
+                      本项目代码仅作为学习 Myswap V2 协议、智能合约交互、Web3 前端开发的技术参考。
                       请遵守当地法律法规，不得用于非法用途或未经授权的金融活动。
                     </p>
                   </div>

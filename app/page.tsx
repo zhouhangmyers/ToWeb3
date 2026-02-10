@@ -45,7 +45,7 @@ const features = [
 const stats = [
     { label: "支持链", value: "5" },
     { label: "核心功能", value: "4" },
-    { label: "协议", value: "Uniswap V2" },
+    { label: "协议", value: "Myswap V2" },
 ]
 
 export default function HomePage() {
@@ -64,7 +64,7 @@ export default function HomePage() {
 
                 <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-16 text-center">
                     <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-sm font-medium">
-                        基于 Uniswap V2 协议构建
+                        基于 Myswap V2 协议构建
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-linear-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight">

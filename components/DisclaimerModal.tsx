@@ -75,7 +75,7 @@ export function DisclaimerModal() {
                             <h3 className="text-lg font-semibold text-white">一、项目性质</h3>
                             <ul className="list-disc list-inside space-y-2 text-gray-400">
                                 <li><strong className="text-gray-300">非商业用途：</strong>本项目无任何商业盈利行为，完全开源免费。</li>
-                                <li><strong className="text-gray-300">教育目的：</strong>本项目仅作为学习 Uniswap V2 协议、智能合约交互、Web3 前端开发的技术参考。</li>
+                                <li><strong className="text-gray-300">教育目的：</strong>本项目仅作为学习 Myswap V2 协议、智能合约交互、Web3 前端开发的技术参考。</li>
                                 <li><strong className="text-gray-300">开源透明：</strong>所有源代码公开在 GitHub，接受社区审查。</li>
                             </ul>
                         </div>
@@ -133,6 +133,10 @@ export function DisclaimerModal() {
                                 <a href="https://github.com/zhouhangmyers/ToWeb3" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:underline ml-1">
                                     https://github.com/zhouhangmyers/ToWeb3
                                 </a>
+                                <a href="https://github.com/zhouhangmyers/MyswapV2" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:underline ml-1">
+                                    https://github.com/zhouhangmyers/MyswapV2
+                                </a>
+                                
                             </p>
                         </div>
 
