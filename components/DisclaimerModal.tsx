@@ -127,16 +127,17 @@ export function DisclaimerModal() {
 
                         <div className="p-4 bg-gray-800/50 border border-gray-700 rounded-lg">
                             <p className="text-xs text-gray-500">
-                                <strong className="text-gray-400">版本信息：</strong>本声明版本 1.0，发布日期 2026-02-08<br/>
-                                <strong className="text-gray-400">作者：</strong>周航<br/>
+                                <strong className="text-gray-400">版本信息：</strong>本声明版本 1.0，发布日期 2026-02-08<br />
+                                <strong className="text-gray-400">作者：</strong>周航<br />
                                 <strong className="text-gray-400">GitHub开源地址：</strong>
                                 <a href="https://github.com/zhouhangmyers/ToWeb3" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:underline ml-1">
                                     https://github.com/zhouhangmyers/ToWeb3
-                                </a>
+                                </a><br />
+                                <strong className="text-gray-400">Myswap V2 协议地址：</strong>
                                 <a href="https://github.com/zhouhangmyers/MyswapV2" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:underline ml-1">
                                     https://github.com/zhouhangmyers/MyswapV2
                                 </a>
-                                
+
                             </p>
                         </div>
 
