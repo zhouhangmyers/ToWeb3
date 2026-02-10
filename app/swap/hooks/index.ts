@@ -1,4 +1,4 @@
-export { useLocalStorage, useRouterAddress, useTokenHistory } from "./useLocalStorage"
+export { useRouterAddress, useTokenHistory } from "./useLocalStorage"
 export { useTokenInfo } from "./useTokenInfo"
 export { useApproval } from "./useApproval"
 export { useSwap } from "./useSwap"
