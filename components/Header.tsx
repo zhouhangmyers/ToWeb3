@@ -3,9 +3,16 @@
 import Link from "next/link";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useState } from "react";
+import { useAccount, useSwitchChain } from "wagmi";
+import { sepolia } from "wagmi/chains";
 
 export function Header() {
     const [open, setOpen] = useState(false);
+    const { isConnected, chainId } = useAccount();
+    const { switchChain, isPending } = useSwitchChain();
+
+    const preferredChain = sepolia;
+    const isUnsupported = isConnected && chainId !== undefined && chainId !== preferredChain.id;
 
     return (
         <header className="border-b bg-black px-4 md:px-10">
@@ -33,6 +40,24 @@ export function Header() {
                     菜单
                 </button>
             </div>
+
+            {isUnsupported && (
+                <div className="pb-4">
+                    <div className="rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+                        当前网络不受支持，请切换到 Sepolia：
+                        <div className="mt-3 flex flex-wrap gap-2">
+                            <button
+                                type="button"
+                                className="rounded-lg border border-red-400/40 px-3 py-1.5 text-xs text-red-100 hover:bg-red-500/20 disabled:opacity-60"
+                                onClick={() => switchChain({ chainId: preferredChain.id })}
+                                disabled={isPending}
+                            >
+                                {preferredChain.name}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {open && (
                 <div className="md:hidden pb-4">

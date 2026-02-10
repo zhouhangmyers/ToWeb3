@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi"
 import { parseUnits } from "viem"
 import { uniswapV2RouterAbi } from "@/lib/uniswapV2Router"
+import { useSepoliaGuard } from "@/lib/useSepoliaGuard"
 
 // 原生代币占位符地址
 const NATIVE_TOKEN_PLACEHOLDER = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
@@ -15,11 +16,13 @@ export function useAddLiquidity(
     userAddress?: `0x${string}`
 ) {
     const [error, setError] = useState<string | null>(null)
+    const { assertSepolia } = useSepoliaGuard()
     const { writeContract, data: addLiquidityHash, isPending } = useWriteContract()
     const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash: addLiquidityHash })
 
     const handleAddLiquidity = (amountA: string, amountB: string) => {
         if (!routerAddr || !tokenAAddr || !tokenBAddr || !amountA || !amountB || !userAddress) return
+        if (!assertSepolia(setError)) return
 
         try {
             const parsedA = parseUnits(amountA, tokenADecimals)

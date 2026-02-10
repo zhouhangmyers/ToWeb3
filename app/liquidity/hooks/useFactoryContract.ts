@@ -6,6 +6,7 @@ import {
 } from "wagmi"
 import { encodeDeployData, isAddress } from "viem"
 import { uniswapV2FactoryAbil, uniswapV2Bytecode as factoryBytecode } from "@/lib/uniswapV2Factory"
+import { useSepoliaGuard } from "@/lib/useSepoliaGuard"
 
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
@@ -17,6 +18,7 @@ interface UseFactoryContractProps {
 export function useFactoryContract({ savedAddress, onAddressSaved }: UseFactoryContractProps) {
     const [isReset, setIsReset] = useState(false)
     const [feeToSetter, setFeeToSetter] = useState("")
+    const { assertSepolia, isWrongNetwork, message } = useSepoliaGuard()
 
     // 部署 Factory
     const {
@@ -69,6 +71,7 @@ export function useFactoryContract({ savedAddress, onAddressSaved }: UseFactoryC
         if (setter !== ZERO_ADDRESS && !isAddress(setter)) {
             return
         }
+        if (!assertSepolia()) return
         const data = encodeDeployData({
             abi: uniswapV2FactoryAbil,
             bytecode: factoryBytecode,
@@ -104,5 +107,6 @@ export function useFactoryContract({ savedAddress, onAddressSaved }: UseFactoryC
 
         // 错误
         deployError: factoryDeployError,
+        networkError: isWrongNetwork ? message : null,
     }
 }

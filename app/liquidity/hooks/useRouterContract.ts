@@ -6,6 +6,7 @@ import {
 } from "wagmi"
 import { encodeDeployData, isAddress } from "viem"
 import { uniswapV2RouterAbi, uniswapV2Bytecode as routerBytecode } from "@/lib/uniswapV2Router"
+import { useSepoliaGuard } from "@/lib/useSepoliaGuard"
 
 interface UseRouterContractProps {
     savedAddress: string | null
@@ -23,6 +24,7 @@ export function useRouterContract({
     const [isReset, setIsReset] = useState(false)
     const [routerFactoryInput, setRouterFactoryInput] = useState("")
     const [routerWethInput, setRouterWethInput] = useState("")
+    const { assertSepolia, isWrongNetwork, message } = useSepoliaGuard()
 
     // 自动填充输入框
     useEffect(() => {
@@ -80,6 +82,7 @@ export function useRouterContract({
         if (!isAddress(factoryTrimmed) || !isAddress(wethTrimmed)) {
             return
         }
+        if (!assertSepolia()) return
 
         const data = encodeDeployData({
             abi: uniswapV2RouterAbi,
@@ -117,5 +120,6 @@ export function useRouterContract({
 
         // 错误
         deployError: routerDeployError,
+        networkError: isWrongNetwork ? message : null,
     }
 }

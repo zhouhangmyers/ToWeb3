@@ -9,6 +9,7 @@ import {
 } from "wagmi"
 import { encodeDeployData, parseEther } from "viem"
 import { wethAbi, wethBytecode } from "@/lib/WETH-contract"
+import { useSepoliaGuard } from "@/lib/useSepoliaGuard"
 
 interface UseWethContractProps {
     savedAddress: string | null
@@ -17,6 +18,7 @@ interface UseWethContractProps {
 
 export function useWethContract({ savedAddress, onAddressSaved }: UseWethContractProps) {
     const { address } = useAccount()
+    const { assertSepolia, isWrongNetwork, message } = useSepoliaGuard()
     const [isReset, setIsReset] = useState(false)
     const [depositAmount, setDepositAmount] = useState("")
     const [withdrawAmount, setWithdrawAmount] = useState("")
@@ -127,6 +129,7 @@ export function useWethContract({ savedAddress, onAddressSaved }: UseWethContrac
 
     // 部署 WETH 合约
     const deployWeth = () => {
+        if (!assertSepolia()) return
         const data = encodeDeployData({
             abi: wethAbi,
             bytecode: wethBytecode,
@@ -137,6 +140,7 @@ export function useWethContract({ savedAddress, onAddressSaved }: UseWethContrac
     // Deposit ETH to WETH
     const deposit = (amount: string) => {
         if (!wethAddr || !amount) return
+        if (!assertSepolia()) return
         writeDeposit({
             address: wethAddr,
             abi: wethAbi,
@@ -148,6 +152,7 @@ export function useWethContract({ savedAddress, onAddressSaved }: UseWethContrac
     // Withdraw WETH to ETH
     const withdraw = (amount: string) => {
         if (!wethAddr || !amount) return
+        if (!assertSepolia()) return
         writeWithdraw({
             address: wethAddr,
             abi: wethAbi,
@@ -197,6 +202,7 @@ export function useWethContract({ savedAddress, onAddressSaved }: UseWethContrac
 
         // 错误
         deployError: wethDeployError,
+        networkError: isWrongNetwork ? message : null,
 
         // Refetch 方法
         refetchWethBalance,

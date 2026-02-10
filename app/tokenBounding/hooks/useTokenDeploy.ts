@@ -12,6 +12,7 @@ import {
 } from "wagmi"
 import { encodeDeployData, parseUnits } from "viem"
 import { erc20Abi, erc20Bytecode } from "@/lib/erc20-contract"
+import { useSepoliaGuard } from "@/lib/useSepoliaGuard"
 
 interface UseTokenDeployParams {
     tokenName: string
@@ -22,6 +23,7 @@ interface UseTokenDeployParams {
 
 export function useTokenDeploy({ tokenName, tokenSymbol, tokenDecimals, initialSupply }: UseTokenDeployParams) {
     const { address, isConnected } = useAccount()
+    const { assertSepolia, isWrongNetwork, message } = useSepoliaGuard()
 
     const { sendTransaction, data: deployHash, isPending: isDeploying, error: deployError } = useSendTransaction()
 
@@ -76,6 +78,7 @@ export function useTokenDeploy({ tokenName, tokenSymbol, tokenDecimals, initialS
 
     function handleDeploy() {
         if (!tokenName || !tokenSymbol || !initialSupply) return
+        if (!assertSepolia()) return
         const supplyWithDecimals = parseUnits(initialSupply, Number(tokenDecimals))
         const data = encodeDeployData({
             abi: erc20Abi,
@@ -99,6 +102,7 @@ export function useTokenDeploy({ tokenName, tokenSymbol, tokenDecimals, initialS
         gasEstimate,
         estimatedCost,
         currentStep,
+        networkError: isWrongNetwork ? message : null,
         handleDeploy,
     }
 }

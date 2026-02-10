@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi"
 import { maxUint256 } from "viem"
 import { erc20Abi } from "@/lib/erc20-contract"
+import { useSepoliaGuard } from "@/lib/useSepoliaGuard"
 
 /**
  * Token 授权操作 hook
@@ -11,11 +12,13 @@ export function useApproval(
     routerAddress: `0x${string}` | undefined,
     refetchAllowance: () => void
 ) {
+    const { assertSepolia } = useSepoliaGuard()
     const { writeContract: writeApprove, data: approveHash, isPending: isApprovePending } = useWriteContract()
     const { isLoading: isApproveConfirming, isSuccess: isApproveSuccess } = useWaitForTransactionReceipt({ hash: approveHash })
 
     const handleApprove = () => {
         if (!tokenAddress || !routerAddress) return
+        if (!assertSepolia()) return
         writeApprove({
             address: tokenAddress,
             abi: erc20Abi,

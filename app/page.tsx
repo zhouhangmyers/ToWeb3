@@ -43,7 +43,7 @@ const features = [
 ]
 
 const stats = [
-    { label: "支持链", value: "5" },
+    { label: "支持链", value: "5 条" },
     { label: "核心功能", value: "4" },
     { label: "协议", value: "Myswap V2" },
 ]

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi"
 import { parseUnits } from "viem"
 import { uniswapV2RouterAbi } from "@/lib/uniswapV2Router"
+import { useSepoliaGuard } from "@/lib/useSepoliaGuard"
 
 export type SwapMode = "exactIn" | "exactOut"
 
@@ -20,6 +21,7 @@ export function useSwap(
     path: string[]
 ) {
     const [error, setError] = useState<string | null>(null)
+    const { assertSepolia } = useSepoliaGuard()
 
     const { writeContract: writeSwap, data: swapHash, isPending: isSwapPending } = useWriteContract()
     const { isLoading: isSwapConfirming, isSuccess: isSwapSuccess } = useWaitForTransactionReceipt({ hash: swapHash })
@@ -37,6 +39,7 @@ export function useSwap(
             setError("缺少必要参数：请确保已连接钱包并选择了代币")
             return
         }
+        if (!assertSepolia(setError)) return
 
         if (!amountIn || !amountOut) {
             setError("请输入兑换数量")

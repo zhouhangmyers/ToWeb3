@@ -3,6 +3,7 @@
 "use client";
 
 import { RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
+import { sepolia } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider, type Config } from "wagmi";
 import { config } from "@/lib/wagmi";
@@ -23,7 +24,7 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
     return (
         <WagmiProvider config={config as Config}>
             <QueryClientProvider client={queryClient}>
-                <RainbowKitProvider theme={darkTheme()} locale="en">
+                <RainbowKitProvider theme={darkTheme()} locale="en" initialChain={sepolia}>
                     {children}
                 </RainbowKitProvider>
             </QueryClientProvider>

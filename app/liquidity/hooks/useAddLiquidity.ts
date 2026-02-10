@@ -10,6 +10,7 @@ import { isAddress, parseUnits, maxUint256, BaseError } from "viem"
 import { erc20Abi } from "@/lib/erc20-contract"
 import { uniswapV2RouterAbi } from "@/lib/uniswapV2Router"
 import { uniswapV2FactoryAbil } from "@/lib/uniswapV2Factory"
+import { useSepoliaGuard } from "@/lib/useSepoliaGuard"
 
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
@@ -22,6 +23,7 @@ interface UseAddLiquidityProps {
 export function useAddLiquidity({ routerAddress, factoryAddress, wethAddress }: UseAddLiquidityProps) {
     const { address } = useAccount()
     const publicClient = usePublicClient()
+    const { assertSepolia } = useSepoliaGuard()
 
     const [tokenA, setTokenA] = useState("")
     const [tokenB, setTokenB] = useState("")
@@ -161,6 +163,7 @@ export function useAddLiquidity({ routerAddress, factoryAddress, wethAddress }: 
     // 处理函数
     async function handleAddLiquidity() {
         if (!routerAddr || !tokenAAddr || !tokenBAddr || !amountA || !amountB || !address) return
+        if (!assertSepolia(setAddLiquiditySimError)) return
         const parsedA = parseTokenAmount(amountA, tokenADecimalsNumber)
         const parsedB = parseTokenAmount(amountB, tokenBDecimalsNumber)
         if (parsedA === null || parsedB === null) return
@@ -321,6 +324,7 @@ export function useAddLiquidity({ routerAddress, factoryAddress, wethAddress }: 
 
     function handleApproveTokenA() {
         if (!tokenAAddr || !routerAddr) return
+        if (!assertSepolia(setAddLiquiditySimError)) return
         writeApproveA({
             address: tokenAAddr,
             abi: erc20Abi,
@@ -331,6 +335,7 @@ export function useAddLiquidity({ routerAddress, factoryAddress, wethAddress }: 
 
     function handleApproveTokenB() {
         if (!tokenBAddr || !routerAddr) return
+        if (!assertSepolia(setAddLiquiditySimError)) return
         writeApproveB({
             address: tokenBAddr,
             abi: erc20Abi,
