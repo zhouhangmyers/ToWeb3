@@ -8,7 +8,7 @@ import { sepolia } from "wagmi/chains";
 
 export function Header() {
     const [open, setOpen] = useState(false);
-    const { isConnected, chainId } = useAccount();
+    const { isConnected, chainId, address } = useAccount();
     const { switchChain, isPending } = useSwitchChain();
 
     const preferredChain = sepolia;
@@ -39,6 +39,29 @@ export function Header() {
                 >
                     菜单
                 </button>
+            </div>
+
+            <div className="pb-4">
+                <div className="rounded-xl border border-gray-800 bg-gray-900/50 px-4 py-3 text-sm text-gray-300">
+                    {isConnected && address ? (
+                        <div className="flex flex-wrap items-center gap-3">
+                            <span className="inline-flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                                已连接
+                            </span>
+                            <span className="text-gray-400">
+                                地址: {address.slice(0, 6)}...{address.slice(-4)}
+                            </span>
+                            <span
+                                className={`text-xs px-2 py-0.5 rounded border ${chainId === sepolia.id ? "border-green-500/40 text-green-300" : "border-red-500/40 text-red-300"}`}
+                            >
+                                {chainId === sepolia.id ? "Sepolia" : `Chain ${chainId ?? "-"}`}
+                            </span>
+                        </div>
+                    ) : (
+                        <div className="text-gray-400">未连接钱包</div>
+                    )}
+                </div>
             </div>
 
             {isUnsupported && (
