@@ -84,7 +84,6 @@ export function DisclaimerModal() {
                             <h3 className="text-lg font-semibold text-white">二、风险提示</h3>
                             <ul className="list-disc list-inside space-y-2 text-gray-400">
                                 <li><strong className="text-red-400">区块链风险：</strong>区块链交易具有不可逆性，一旦执行无法撤销。</li>
-                                <li><strong className="text-red-400">智能合约风险：</strong>智能合约可能存在未知漏洞或安全隐患，未经专业审计。</li>
                                 <li><strong className="text-red-400">资金风险：</strong>请勿使用真实资金操作，任何资金损失由用户自行承担。</li>
                                 <li><strong className="text-red-400">网络风险：</strong>建议仅在测试网络（如 Sepolia）上进行实验。</li>
                                 <li><strong className="text-red-400">价格波动：</strong>加密货币价格波动剧烈，可能导致重大损失。</li>
