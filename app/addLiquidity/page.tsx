@@ -139,7 +139,7 @@ export default function AddLiquidityPage() {
             <div className="text-center space-y-2">
                 <h1 className="text-3xl font-bold tracking-tight text-white">添加流动性</h1>
                 <p className="text-muted-foreground">
-                    为代币对添加流动性，赚取交易手续费
+                    为代币对添加流动性，赚取交易手续费，完整功能请连接钱包后使用。
                 </p>
             </div>
 

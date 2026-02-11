@@ -206,7 +206,7 @@ export default function SwapTokenPage() {
             <div className="text-center space-y-2">
                 <h1 className="text-3xl font-bold tracking-tight text-white">代币兑换</h1>
                 <p className="text-muted-foreground">
-                    使用 Uniswap V2 协议进行代币兑换
+                    使用 Uniswap V2 协议进行代币兑换，完整功能请连接钱包后使用。
                 </p>
             </div>
 
